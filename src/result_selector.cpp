@@ -927,7 +927,6 @@ void ResultSelector::onFromClipboardClicked()
     // Extract the JSON data
     QByteArray jsonData = clipboardText.mid(start, end - start + 1);
     QString DataAsString = QString(jsonData);
-    QMessageBox::warning(this, "Paste benchmark results",  DataAsString);
     QString errorMsg;
     BenchResults newResults = ResultParser::parseJsonString(jsonData, errorMsg);
     if (newResults.benchmarks.size() <= 0) {
