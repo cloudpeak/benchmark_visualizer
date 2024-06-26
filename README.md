@@ -1,3 +1,9 @@
+# Introduction
+**This project is a fork of [gaujay/jomt] ([Original Project URL](https://github.com/gaujay/jomt)).**
+
+I add the following features:
+- **Clipboard Integration:** Users can now paste benchmark results directly from the clipboard as JSON data, simplifying the input process.
+- **Windows Binary Downloads:**  To make the tool readily accessible, pre-compiled Windows binaries are now available for download. This provides a convenient way for users to get started without needing to compile the project themselves.
 
 # JOMT
 
