@@ -47,12 +47,24 @@ set(RESOURCES
 set(CMAKE_AUTOUIC_SEARCH_PATHS ui)
 
 # Target
+if (UNIX)
 add_executable(JOMT
   ${HEADERS}
   ${SOURCES}
   ${FORMS}
   ${RESOURCES}
 )
+elseif(WIN32)
+
+add_executable(JOMT WIN32
+  ${HEADERS}
+  ${SOURCES}
+  ${FORMS}
+  ${RESOURCES}
+)
+endif()
+
+
 target_include_directories(JOMT PRIVATE include)
 
 target_link_libraries(JOMT PRIVATE Qt6::Widgets Qt6::Charts Qt6::DataVisualization)
