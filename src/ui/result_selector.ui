@@ -39,7 +39,6 @@
            <property name="font">
             <font>
              <pointsize>9</pointsize>
-             <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
@@ -74,6 +73,13 @@
              <widget class="QPushButton" name="pushButtonOverwrite">
               <property name="text">
                <string>Overwrite...</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButtonFromClipboard">
+              <property name="text">
+               <string>From Clipboard</string>
               </property>
              </widget>
             </item>
@@ -141,7 +147,6 @@
          <property name="font">
           <font>
            <pointsize>9</pointsize>
-           <weight>50</weight>
            <bold>false</bold>
           </font>
          </property>
@@ -157,7 +162,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -171,7 +175,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -189,7 +192,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -203,7 +205,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -214,7 +215,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -228,7 +228,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -239,7 +238,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -253,7 +251,6 @@
             <property name="font">
              <font>
               <pointsize>9</pointsize>
-              <weight>50</weight>
               <bold>false</bold>
              </font>
             </property>
@@ -328,7 +325,6 @@
          <property name="font">
           <font>
            <pointsize>9</pointsize>
-           <weight>50</weight>
            <bold>false</bold>
           </font>
          </property>

@@ -23,6 +23,7 @@ class ResultParser
 {
 public:
     static BenchResults parseJsonFile(const QString &filename, QString& errorMsg);
+    static BenchResults parseJsonString(const QByteArray& benchData, QString& errorMsg);
 };
 
 

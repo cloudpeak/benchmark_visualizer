@@ -34,6 +34,9 @@
 #include <QJsonDocument>
 #include <QScreen>
 #include <QGuiApplication>
+#include <QClipboard>
+#include <QMimeData>
+
 
 #include <utility>
 
@@ -104,7 +107,7 @@ void ResultSelector::connectUI()
     connect(ui->pushButtonNew,       &QPushButton::clicked, this, &ResultSelector::onNewClicked);
     connect(ui->pushButtonAppend,    &QPushButton::clicked, this, &ResultSelector::onAppendClicked);
     connect(ui->pushButtonOverwrite, &QPushButton::clicked, this, &ResultSelector::onOverwriteClicked);
-    
+    connect(ui->pushButtonFromClipboard,       &QPushButton::clicked, this, &ResultSelector::onFromClipboardClicked);
     connect(ui->pushButtonSelectAll,  &QPushButton::clicked, this, &ResultSelector::onSelectAllClicked);
     connect(ui->pushButtonSelectNone, &QPushButton::clicked, this, &ResultSelector::onSelectNoneClicked);
     
@@ -896,6 +899,38 @@ void ResultSelector::onOverwriteClicked()
         mWorkingDir = fileInfo.absoluteDir().absolutePath();
     }
 }
+
+void ResultSelector::onFromClipboardClicked()
+{
+    const QMimeData* mimeData = QApplication::clipboard()->mimeData();
+
+    // Check if clipboard contains text
+    if (!mimeData->hasText()) {
+        QMessageBox::warning(this, "Paste benchmark results", "Clipboard does not contain text.");
+        return;
+    }
+
+    // Get text from clipboard as QByteArray
+    QByteArray clipboardText = mimeData->text().toUtf8();
+
+    QString errorMsg;
+    BenchResults newResults = ResultParser::parseJsonString(clipboardText, errorMsg);
+    if (newResults.benchmarks.size() <= 0) {
+        QMessageBox::warning(this, "Paste benchmark results",
+                             "Error parsing clipboard data: " + errorMsg);
+        return;
+    }
+
+    // Overwrite & update
+    auto unselected = getUnselectedBenchmarks(ui->treeWidget, mBchResults);
+    mBchResults.overwriteResults(newResults);
+    updateResults(true, unselected);
+
+    // Window title
+    if (!this->windowTitle().endsWith(" + ..."))
+        this->setWindowTitle(this->windowTitle() + " + ...");
+}
+
 
 // Selection
 void ResultSelector::onSelectAllClicked()

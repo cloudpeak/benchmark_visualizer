@@ -61,7 +61,7 @@ public slots:
     void onNewClicked();
     void onAppendClicked();
     void onOverwriteClicked();
-    
+    void onFromClipboardClicked();
     void onSelectAllClicked();
     void onSelectNoneClicked();
     

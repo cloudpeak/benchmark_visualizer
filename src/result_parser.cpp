@@ -56,11 +56,12 @@ static void cleanupName(BenchData &bchData)
 }
 
 
+
+
 // Parse benchmark results from json file
 BenchResults ResultParser::parseJsonFile(const QString &filename, QString& errorMsg)
 {
     BenchResults bchResults;
-    
     // Read file
     QFile benchFile(filename);
     if ( !benchFile.open(QIODevice::ReadOnly) ) {
@@ -69,6 +70,12 @@ BenchResults ResultParser::parseJsonFile(const QString &filename, QString& error
     }
     QByteArray benchData = benchFile.readAll();
     benchFile.close();
+    return parseJsonString(benchData, errorMsg);
+}
+
+BenchResults ResultParser::parseJsonString(const QByteArray& benchData, QString& errorMsg)
+{
+    BenchResults bchResults;
     
     // Get Json main object
     QJsonDocument benchDoc( QJsonDocument::fromJson(benchData) );
@@ -81,7 +88,6 @@ BenchResults ResultParser::parseJsonFile(const QString &filename, QString& error
         errorMsg = "Empty json benchmark results file.";
         return bchResults;
     }
-    
     
     /*
      * Context
