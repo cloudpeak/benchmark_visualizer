@@ -3,7 +3,7 @@
 
 I add the following features:
 - **Clipboard Integration:** Users can now paste benchmark results directly from the clipboard as JSON data, simplifying the input process.
-- **Windows Binary Downloads:**  To make the tool readily accessible, pre-compiled Windows binaries are now available for download. This provides a convenient way for users to get started without needing to compile the project themselves.
+- **Windows Binary Downloads:**  To make the tool readily accessible, pre-compiled Windows binaries are now available for download. This provides a convenient way for users to get started without needing to compile the project themselves. Download it from [here](https://github.com/cloudpeak/benchmark_visualizer/releases/download/0.9b/benchmark_visualizer.zip).
 
 # JOMT
 
