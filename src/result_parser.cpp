@@ -61,12 +61,11 @@ static void cleanupName(BenchData &bchData)
 // Parse benchmark results from json file
 BenchResults ResultParser::parseJsonFile(const QString &filename, QString& errorMsg)
 {
-    BenchResults bchResults;
     // Read file
     QFile benchFile(filename);
     if ( !benchFile.open(QIODevice::ReadOnly) ) {
         errorMsg = "Couldn't open benchmark results file.";
-        return bchResults;
+        return BenchResults();
     }
     QByteArray benchData = benchFile.readAll();
     benchFile.close();

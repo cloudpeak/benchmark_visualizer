@@ -913,8 +913,23 @@ void ResultSelector::onFromClipboardClicked()
     // Get text from clipboard as QByteArray
     QByteArray clipboardText = mimeData->text().toUtf8();
 
+    // Find the JSON data within the clipboard text
+    int start = clipboardText.indexOf('{');
+    int end = clipboardText.lastIndexOf('}'); // Search from the start position to the end
+
+
+    if (start == -1 || end == -1) {
+        QMessageBox::warning(this, "Paste benchmark results",
+                             "Clipboard does not contain valid JSON data.");
+        return;
+    }
+
+    // Extract the JSON data
+    QByteArray jsonData = clipboardText.mid(start, end - start + 1);
+    QString DataAsString = QString(jsonData);
+    QMessageBox::warning(this, "Paste benchmark results",  DataAsString);
     QString errorMsg;
-    BenchResults newResults = ResultParser::parseJsonString(clipboardText, errorMsg);
+    BenchResults newResults = ResultParser::parseJsonString(jsonData, errorMsg);
     if (newResults.benchmarks.size() <= 0) {
         QMessageBox::warning(this, "Paste benchmark results",
                              "Error parsing clipboard data: " + errorMsg);
